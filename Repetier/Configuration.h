@@ -62,7 +62,7 @@ To override EEPROM settings with config settings, set EEPROM_MODE 0
 // Rambo                      = 301
 // Arduino Due                = 401 // This is only experimental
 
-#define MOTHERBOARD 33
+#define MOTHERBOARD 301
 #include "pins.h"
 
 // Uncomment the following line if oyu are using arduino compatible firmware made for Arduino version earlier then 1.0
@@ -962,7 +962,8 @@ to activate the quadratic term. Only adds lots of computations and storage usage
 */
 //#define BAUDRATE 76800
 //#define BAUDRATE 57600
-#define BAUDRATE 250000
+#define BAUDRATE 115200
+//#define BAUDRATE 250000
 
 /**
 Some boards like Gen7 have a power on pin, to enable the atx power supply. If this is defined,
@@ -1011,7 +1012,7 @@ matches, the stored values are used to overwrite the settings.
 IMPORTANT: With mode <>0 some changes in configuration.h are not set any more, as they are 
            taken from the EEPROM.
 */
-#define EEPROM_MODE 1
+#define EEPROM_MODE 0
 /** Set to false to disable SD support: */
 #ifndef SDSUPPORT  // Some boards have sd support on board. These define the values already in pins.h
 #define SDSUPPORT false
