@@ -135,17 +135,38 @@ Mega.
 #define ZAXIS_STEPS_PER_MM AXIS_STEPS_PER_MM
 
 #else
+
 /** Drive settings for printers with cartesian drive systems */
-/** \brief Number of steps for a 1mm move in x direction. 
-For xy gantry use 2*belt moved!
-Overridden if EEPROM activated. */
-#define XAXIS_STEPS_PER_MM 101.859
-/** \brief Number of steps for a 1mm move in y direction.
-For xy gantry use 2*belt moved!
-Overridden if EEPROM activated.*/
-#define YAXIS_STEPS_PER_MM 101.859
+
+/** \brief Steps per rotation of stepper motor
+*/
+#define STEPS_PER_ROTATION 200
+
+/** \brief Micro stepping rate of X, Y and Y tower stepper drivers
+*/
+#define MICRO_STEPS 8
+
+/** \brief Pitch in mm of drive belt. GT2 = 2mm
+*/
+#define BELT_PITCH 2
+
+/** \brief Number of teeth on X, Y and Z tower pulleys
+*/
+#define PULLEY_TEETH 20
+#define PULLEY_CIRCUMFERENCE (BELT_PITCH * PULLEY_TEETH)
+
+#define AXIS_STEPS_PER_MM ((float)(MICRO_STEPS * STEPS_PER_ROTATION) / PULLEY_CIRCUMFERENCE)
+
+/** \brief Number of steps for a 1mm move in x direction. Overridden if EEPROM activated. */
+#define XAXIS_STEPS_PER_MM AXIS_STEPS_PER_MM
+
+/** \brief Number of steps for a 1mm move in y direction. Overridden if EEPROM activated.*/
+#define YAXIS_STEPS_PER_MM AXIS_STEPS_PER_MM
+
 /** \brief Number of steps for a 1mm move in z direction  Overridden if EEPROM activated.*/
-#define ZAXIS_STEPS_PER_MM 92.599
+#define Z_THREAD_PITCH 1.25
+#define ZAXIS_STEPS_PER_MM (MICRO_STEPS * STEPS_PER_ROTATION / Z_THREAD_PITCH)
+
 #endif
 
 // ##########################################################################################
@@ -691,7 +712,7 @@ on this endstop.
 #define MICROSTEP_MODES {8,8,8,8,8} // [1,2,4,8,16]
 
 // Motor Current setting (Only functional when motor driver current ref pins are connected to a digital trimpot on supported boards)
-#define MOTOR_CURRENT {135,135,135,135,135} // Values 0-255 (RAMBO 135 = ~0.75A, 185 = ~1A)
+#define MOTOR_CURRENT {222,222,135,135,135} // Values 0-255 (RAMBO 135 = ~0.75A, 185 = ~1A, 222 = ~1.2A)
 //#define MOTOR_CURRENT {35713,35713,35713,35713,35713} // Values 0-65535 (3D Master 35713 = ~1A)
 
 // Delta settings
