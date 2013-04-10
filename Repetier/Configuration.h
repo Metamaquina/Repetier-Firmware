@@ -196,7 +196,7 @@ Mega.
 // 99 Generic thermistor table 3
 // 100 is AD595
 // 101 is MAX6675
-#define EXT0_TEMPSENSOR_TYPE 1
+#define EXT0_TEMPSENSOR_TYPE 97
 // Analog input pin for reading temperatures or pin enabling SS for MAX6675
 #define EXT0_TEMPSENSOR_PIN TEMP_0_PIN
 // WHich pin enables the heater
@@ -461,7 +461,7 @@ The capacitor is for reducing noise from long thermistor cable. If you don't hav
 
 If you don't need the generic table, uncomment the following define.
 */
-//#define USE_GENERIC_THERMISTORTABLE_1
+#define USE_GENERIC_THERMISTORTABLE_1
 
 /* Some examples for different thermistors:
 
@@ -482,9 +482,9 @@ You can use the beta from the datasheet or compute it yourself. See
 http://reprap.org/wiki/MeasuringThermistorBeta
 for more details.
 */
-#define GENERIC_THERM1_BETA 4036
+#define GENERIC_THERM1_BETA 3977
 /** Start temperature for generated thermistor table */
-#define GENERIC_THERM1_MIN_TEMP -20
+#define GENERIC_THERM1_MIN_TEMP -10
 /** End Temperature for generated thermistor table */
 #define GENERIC_THERM1_MAX_TEMP 300
 #define GENERIC_THERM1_R1 0
@@ -492,12 +492,12 @@ for more details.
 
 // The same for table 2 and 3 if needed
 
-//#define USE_GENERIC_THERMISTORTABLE_2
-#define GENERIC_THERM2_R0 1042.7
-#define GENERIC_THERM2_T0 170
-#define GENERIC_THERM2_BETA 4036
-#define GENERIC_THERM2_MIN_TEMP -20
-#define GENERIC_THERM2_MAX_TEMP 300
+#define USE_GENERIC_THERMISTORTABLE_2
+#define GENERIC_THERM2_R0 15000
+#define GENERIC_THERM2_T0 25
+#define GENERIC_THERM2_BETA 3528
+#define GENERIC_THERM2_MIN_TEMP 20
+#define GENERIC_THERM2_MAX_TEMP 150
 #define GENERIC_THERM2_R1 0
 #define GENERIC_THERM2_R2 4700
 
@@ -530,7 +530,7 @@ Value is used for all generic tables created. */
 
 // Select type of your heated bed. It's the same as for EXT0_TEMPSENSOR_TYPE
 // set to 0 if you don't have a heated bed
-#define HEATED_BED_SENSOR_TYPE 1
+#define HEATED_BED_SENSOR_TYPE 98
 /** Analog pin of analog sensor to read temperature of heated bed.  */
 #define HEATED_BED_SENSOR_PIN TEMP_BED_PIN
 /** \brief Pin to enable heater for bed. */
