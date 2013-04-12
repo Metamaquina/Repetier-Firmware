@@ -196,7 +196,7 @@ Mega.
 // 99 Generic thermistor table 3
 // 100 is AD595
 // 101 is MAX6675
-#define EXT0_TEMPSENSOR_TYPE 97
+#define EXT0_TEMPSENSOR_TYPE 1
 // Analog input pin for reading temperatures or pin enabling SS for MAX6675
 #define EXT0_TEMPSENSOR_PIN TEMP_0_PIN
 // WHich pin enables the heater
@@ -426,15 +426,74 @@ temperature*8.
 If you have a PTC thermistor instead of a NTC thermistor, keep the adc values increasing and use themistor types 50-52 instead of 5-7! 
 */
 /** Number of entries in the user thermistortable 0. Set to 0 to disable it. */
-#define NUM_TEMPS_USERTHERMISTOR0 28
-#define USER_THERMISTORTABLE0  {\
-  {1*4,864*8},{21*4,300*8},{25*4,290*8},{29*4,280*8},{33*4,270*8},{39*4,260*8},{46*4,250*8},{54*4,240*8},{64*4,230*8},{75*4,220*8},\
-  {90*4,210*8},{107*4,200*8},{128*4,190*8},{154*4,180*8},{184*4,170*8},{221*4,160*8},{265*4,150*8},{316*4,140*8},{375*4,130*8},\
-  {441*4,120*8},{513*4,110*8},{588*4,100*8},{734*4,80*8},{856*4,60*8},{938*4,40*8},{986*4,20*8},{1008*4,0*8},{1018*4,-20*8}	}
+
+// *************************** Heated bed 15k-ohm thermistor ***************************
+// Thermistor lookup table for RepRap Temperature Sensor Boards (http://make.rrrf.org/ts)
+// Made with createTemperatureLookup.py (http://svn.reprap.org/trunk/reprap/firmware/Arduino/utilities/createTemperatureLookup.py)
+// ./createTemperatureLookup.py --r0=15000 --t0=25 --r1=0 --r2=4700 --beta=3528 --max-adc=1023
+// r0: 15000
+// t0: 25
+// r1: 0
+// r2: 4700
+// beta: 3528
+// max adc: 1023
+
+#define NUM_TEMPS_USERTHERMISTOR0 20
+#define USER_THERMISTORTABLE0 {\
+   {1*4, 669*8},\
+   {54*4, 180*8},\
+   {107*4, 140*8},\
+   {160*4, 119*8},\
+   {213*4, 104*8},\
+   {266*4, 93*8},\
+   {319*4, 83*8},\
+   {372*4, 75*8},\
+   {425*4, 68*8},\
+   {478*4, 61*8},\
+   {531*4, 55*8},\
+   {584*4, 48*8},\
+   {637*4, 42*8},\
+   {690*4, 36*8},\
+   {743*4, 29*8},\
+   {796*4, 22*8},\
+   {849*4, 14*8},\
+   {902*4, 5*8},\
+   {955*4, -7*8},\
+   {1008*4, -35*8}}
+
 
 /** Number of entries in the user thermistortable 1. Set to 0 to disable it. */
-#define NUM_TEMPS_USERTHERMISTOR1 0
-#define USER_THERMISTORTABLE1  {}  
+// ./createTemperatureLookup.py --r0=100000 --t0=25 --r1=0 --r2=4700 --beta=3977 --max-adc=1023
+// r0: 100000
+// t0: 25
+// r1: 0
+// r2: 4700
+// beta: 3977
+// max adc: 1023
+
+#define NUM_TEMPS_USERTHERMISTOR1 20
+#define USER_THERMISTORTABLE1  {\
+   {1*4, 913*8},\
+   {54*4, 264*8},\
+   {107*4, 215*8},\
+   {160*4, 189*8},\
+   {213*4, 171*8},\
+   {266*4, 157*8},\
+   {319*4, 145*8},\
+   {372*4, 135*8},\
+   {425*4, 127*8},\
+   {478*4, 118*8},\
+   {531*4, 110*8},\
+   {584*4, 103*8},\
+   {637*4, 95*8},\
+   {690*4, 88*8},\
+   {743*4, 80*8},\
+   {796*4, 71*8},\
+   {849*4, 62*8},\
+   {902*4, 50*8},\
+   {955*4, 34*8},\
+   {1008*4, 2*8}}
+   
 /** Number of entries in the user thermistortable 2. Set to 0 to disable it. */
 #define NUM_TEMPS_USERTHERMISTOR2 0
 #define USER_THERMISTORTABLE2  {}  
@@ -524,13 +583,13 @@ Value is used for all generic tables created. */
 /** \brief Set true if you have a heated bed conected to your board, false if not */
 #define HAVE_HEATED_BED true
 
-#define HEATED_BED_MAX_TEMP 90
+#define HEATED_BED_MAX_TEMP 120
 /** Skip M190 wait, if heated bed is already within x degrees. Fixed numbers only, 0 = off. */
 #define SKIP_M190_IF_WITHIN 3
 
 // Select type of your heated bed. It's the same as for EXT0_TEMPSENSOR_TYPE
 // set to 0 if you don't have a heated bed
-#define HEATED_BED_SENSOR_TYPE 98
+#define HEATED_BED_SENSOR_TYPE 6
 /** Analog pin of analog sensor to read temperature of heated bed.  */
 #define HEATED_BED_SENSOR_PIN TEMP_BED_PIN
 /** \brief Pin to enable heater for bed. */
