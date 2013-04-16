@@ -152,7 +152,7 @@ Mega.
 
 /** \brief Number of teeth on X, Y and Z tower pulleys
 */
-#define PULLEY_TEETH 20
+#define PULLEY_TEETH 16
 #define PULLEY_CIRCUMFERENCE (BELT_PITCH * PULLEY_TEETH)
 
 #define AXIS_STEPS_PER_MM ((float)(MICRO_STEPS * STEPS_PER_ROTATION) / PULLEY_CIRCUMFERENCE)
