@@ -589,7 +589,7 @@ Value is used for all generic tables created. */
 
 // Select type of your heated bed. It's the same as for EXT0_TEMPSENSOR_TYPE
 // set to 0 if you don't have a heated bed
-#define HEATED_BED_SENSOR_TYPE 6
+#define HEATED_BED_SENSOR_TYPE 5
 /** Analog pin of analog sensor to read temperature of heated bed.  */
 #define HEATED_BED_SENSOR_PIN TEMP_BED_PIN
 /** \brief Pin to enable heater for bed. */
