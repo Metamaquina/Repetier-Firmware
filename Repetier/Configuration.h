@@ -1141,7 +1141,7 @@ Select the language to use.
 #define UI_LANGUAGE 1
 
 // This is line 2 of the status display at startup
-#define UI_VERSION_STRING2 "Mendel"
+#define UI_VERSION_STRING2 "Metamáquina 2"
 
 /** How many ms should a single page be shown, until it is switched to the next one.*/
 #define UI_PAGES_DURATION 4000
