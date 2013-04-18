@@ -949,12 +949,13 @@ All known arduino boards use 64. This value is needed for the extruder timing. *
 
 /* \brief Minimum temperature for extruder operation
 
-This is a safety value. If your extruder temperature is below this temperature, no
-extruder steps are executed. This is to prevent your extruder to move unless the filament
-is at least molten.
+This is a saftey value. If your extruder temperature is below this temperature, no
+extruder steps are executed. This is to prevent your extruder to move unless the fiament
+is at least molten. After havong some complains that the extruder does not work, I leave
+it 0 as default.
 */
 
-#define MIN_EXTRUDER_TEMP 175
+#define MIN_EXTRUDER_TEMP 0
 /** \brief Activate ooze prevention system 
 
 The ooze prevention system tries to prevent ooze, by a fast retract of the filament every time
@@ -1192,7 +1193,7 @@ Values must be in range 1..255
 // Extreme values 
 #define UI_SET_MIN_HEATED_BED_TEMP  55
 #define UI_SET_MAX_HEATED_BED_TEMP 120
-#define UI_SET_MIN_EXTRUDER_TEMP   175
+#define UI_SET_MIN_EXTRUDER_TEMP   160
 #define UI_SET_MAX_EXTRUDER_TEMP   270
 #define UI_SET_EXTRUDER_FEEDRATE 2 // mm/sec
 #define UI_SET_EXTRUDER_RETRACT_DISTANCE 3 // mm

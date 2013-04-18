@@ -457,12 +457,6 @@ void extruder_set_temperature(float temp_celsius,byte extr) {
 #ifdef MAXTEMP
   if(temp_celsius>MAXTEMP) temp_celsius = MAXTEMP;
 #endif
-  if(temp_celsius<MIN_EXTRUDER_TEMP){
-     out.println_int_P(PSTR("Target temperature is lower than MIN_EXTRUDER_TEMP="), MIN_EXTRUDER_TEMP);
-     out.println_int_P(PSTR("Setting target temperature to "), MIN_EXTRUDER_TEMP);
-     out.println_P(PSTR("If you need a lower temperature, you'll have to change your firmware configuration."));
-     temp_celsius = MIN_EXTRUDER_TEMP;
-  }
   if(temp_celsius<0) temp_celsius=0;
   TemperatureController *tc = tempController[extr]; 
   if(temp_celsius==tc->targetTemperatureC) return;
