@@ -753,9 +753,9 @@ on this endstop.
 // For delta robot Z_MAX_LENGTH is maximum travel of the towers and should be set to the distance between the hotend
 // and the platform when the printer is at its home position.
 // If EEPROM is enabled these values will be overidden with the values in the EEPROM
-#define X_MAX_LENGTH 95
-#define Y_MAX_LENGTH 95
-#define Z_MAX_LENGTH 120
+#define X_MAX_LENGTH 200
+#define Y_MAX_LENGTH 200
+#define Z_MAX_LENGTH 150
 
 // Coordinates for the minimum axis. Can also be negative if you want to have the bed start at 0 and the printer can go to the left side
 // of the bed. Maximum coordinate is given by adding the above X_MAX_LENGTH values.
@@ -828,14 +828,14 @@ on this endstop.
     The axis order in all axis related arrays is X, Y, Z
      Overridden if EEPROM activated.
     */
-#define MAX_FEEDRATE_X 200
-#define MAX_FEEDRATE_Y 200
-#define MAX_FEEDRATE_Z 40
+#define MAX_FEEDRATE_X 400
+#define MAX_FEEDRATE_Y 400
+#define MAX_FEEDRATE_Z 4
 
-/** Speed in mm/min for finding the home position.  Overridden if EEPROM activated. */
-#define HOMING_FEEDRATE_X 80
-#define HOMING_FEEDRATE_Y 80
-#define HOMING_FEEDRATE_Z 30
+/** Speed in mm/s for finding the home position.  Overridden if EEPROM activated. */
+#define HOMING_FEEDRATE_X 50
+#define HOMING_FEEDRATE_Y 50
+#define HOMING_FEEDRATE_Z 3
 
 /* If you have a backlash in both z-directions, you can use this. For most printer, the bed will be pushed down by it's
 own weight, so this is nearly never needed. */
@@ -1142,7 +1142,7 @@ Select the language to use.
 #define UI_LANGUAGE 1
 
 // This is line 2 of the status display at startup
-#define UI_VERSION_STRING2 "Mendel"
+#define UI_VERSION_STRING2 "Metamáquina 2"
 
 /** How many ms should a single page be shown, until it is switched to the next one.*/
 #define UI_PAGES_DURATION 4000
