@@ -771,7 +771,15 @@ on this endstop.
 #define MICROSTEP_MODES {8,8,8,8,8} // [1,2,4,8,16]
 
 // Motor Current setting (Only functional when motor driver current ref pins are connected to a digital trimpot on supported boards)
-#define MOTOR_CURRENT {222,222,135,135,135} // Values 0-255 (RAMBO 135 = ~0.75A, 185 = ~1A, 222 = ~1.2A)
+// {X, Y, Z1, Z2, E}
+// Vref = Imax * (8 * Rs)
+// W = Vref/1.66 * 255
+
+// RAMBo board: Rs = 0.1 ohm
+// Values 0-255 (RAMBo 135 = ~0.75A, 185 = ~1A, 222 = ~1.2A)
+#define MOTOR_CURRENT {90,90,135,135,135}
+
+// 3D Master board
 //#define MOTOR_CURRENT {35713,35713,35713,35713,35713} // Values 0-65535 (3D Master 35713 = ~1A)
 
 // Delta settings

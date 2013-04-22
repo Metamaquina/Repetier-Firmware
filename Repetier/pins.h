@@ -1060,6 +1060,7 @@ STEPPER_CURRENT_CONTROL
 #error Oops!  Make sure you have 'Arduino Mega 2560' selected from the 'Tools -> Boards' menu.
 #endif
 
+#define STEPPER_CURRENT_CONTROL  CURRENT_CONTROL_DIGIPOT
 #define X_STEP_PIN     37
 #define X_DIR_PIN      48
 #define X_MIN_PIN      12
