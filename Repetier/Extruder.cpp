@@ -457,12 +457,6 @@ void extruder_set_temperature(float temp_celsius,byte extr) {
 #ifdef MAXTEMP
   if(temp_celsius>MAXTEMP) temp_celsius = MAXTEMP;
 #endif
-  if(temp_celsius<MIN_EXTRUDER_TEMP){
-     out.println_int_P(PSTR("Target temperature is lower than MIN_EXTRUDER_TEMP="), MIN_EXTRUDER_TEMP);
-     out.println_int_P(PSTR("Setting target temperature to "), MIN_EXTRUDER_TEMP);
-     out.println_P(PSTR("If you need a lower temperature, you'll have to change your firmware configuration."));
-     temp_celsius = MIN_EXTRUDER_TEMP;
-  }
   if(temp_celsius<0) temp_celsius=0;
   TemperatureController *tc = tempController[extr]; 
   if(temp_celsius==tc->targetTemperatureC) return;
@@ -495,7 +489,12 @@ void extruder_set_temperature(float temp_celsius,byte extr) {
 
 void heated_bed_set_temperature(float temp_celsius) {
 #if HAVE_HEATED_BED
-   if(temp_celsius>HEATED_BED_MAX_TEMP) temp_celsius = HEATED_BED_MAX_TEMP;
+   if(temp_celsius>HEATED_BED_MAX_TEMP){
+     temp_celsius = HEATED_BED_MAX_TEMP;
+     out.println_int_P(PSTR("Target temperature exceeds HEATED_BED_MAX_TEMP="), HEATED_BED_MAX_TEMP);
+     out.println_P(PSTR("If you need a higher temperature, you'll have to change your firmware configuration."));
+   }
+
    if(temp_celsius<0) temp_celsius = 0;
    if(heatedBedController.targetTemperatureC==temp_celsius) return; // don't flood log with messages if killed
    heatedBedController.targetTemperatureC=temp_celsius;
