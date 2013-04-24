@@ -1149,7 +1149,7 @@ Select the language to use.
 2 = dutch
 3 = brazilian portuguese
 */
-#define UI_LANGUAGE 1
+#define UI_LANGUAGE 3
 
 // This is line 2 of the status display at startup
 #define UI_VERSION_STRING2 "Metamáquina 2"
