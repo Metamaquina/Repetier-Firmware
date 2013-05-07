@@ -179,7 +179,7 @@ Mega.
 #define EXT0_X_OFFSET 0
 #define EXT0_Y_OFFSET 0
 // for skeinforge 40 and later, steps to pull the plasic 1 mm inside the extruder, not out.  Overridden if EEPROM activated.
-#define EX0_E_RATIO 37/11
+#define EX0_E_RATIO float(37)/float(11)
 #define EX0_BOLT_DIAMETER 7.2
 #define EXT0_STEPS_PER_MM (MICRO_STEPS * STEPS_PER_ROTATION * EX0_E_RATIO) / (3.1415 * EX0_BOLT_DIAMETER)
 // What type of sensor is used?
