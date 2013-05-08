@@ -838,9 +838,9 @@ on this endstop.
     The axis order in all axis related arrays is X, Y, Z
      Overridden if EEPROM activated.
     */
-#define MAX_FEEDRATE_X 400
+#define MAX_FEEDRATE_X 500
 #define MAX_FEEDRATE_Y 400
-#define MAX_FEEDRATE_Z 4
+#define MAX_FEEDRATE_Z 5
 
 /** Speed in mm/s for finding the home position.  Overridden if EEPROM activated. */
 #define HOMING_FEEDRATE_X 50
