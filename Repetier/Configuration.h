@@ -784,6 +784,9 @@ on this endstop.
 // 3D Master board
 //#define MOTOR_CURRENT {35713,35713,35713,35713,35713} // Values 0-65535 (3D Master 35713 = ~1A)
 
+
+#define STEP_COUNTER
+
 // Delta settings
 #if DRIVE_SYSTEM==3
 /** \brief Delta rod length

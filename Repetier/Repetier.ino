@@ -2021,6 +2021,7 @@ OUT_P_L_LN("MSteps:",cur->stepsRemaining);
     if(cur->dir & 64) {
       if((cur->error[2] -= cur->delta[2]) < 0) {
         WRITE(Z_STEP_PIN,HIGH);
+				printer_state.countZSteps += ( cur->dir & 4 ? 1 : -1 );
         cur->error[2] += cur_errupd;
 #ifdef DEBUG_STEPCOUNT
         cur->totalStepsRemaining--;
