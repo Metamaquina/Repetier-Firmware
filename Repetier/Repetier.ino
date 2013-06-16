@@ -326,6 +326,8 @@ void update_ramps_parameter() {
   update_extruder_flags();
 }
 
+bool done_boot_sequence;
+
 /** \brief Setup of the hardware
 
 Sets the output and input pins in accordance to your configuration. Initializes the serial interface.
@@ -333,6 +335,7 @@ Interrupt routines to measure analog values and for the stepper timerloop are st
 */
 void setup()
 {
+  done_boot_sequence = false;
 #ifdef ANALYZER
 // Channel->pin assignments
 #if ANALYZER_CH0>=0
@@ -573,12 +576,33 @@ void defaultLoopActions() {
   //void finishNextSegment();
   DEBUG_MEMORY;
 }
+
+#define MM2RC2
+
+#ifdef MM2RC2
+//MM2 Release Candidate #2 has a mechanical bug:
+// for safety me must go down a bit after homing to ZMAX.
+const prog_char PROGMEM boot_sequence[] = "G28 Z\nG1 Z140\nG28 X\nG1 X100\nG28 Y\nG1 Y100\nG1 Z5\n";
+#else
+const prog_char PROGMEM boot_sequence[] = "G28 Z\nG28 X\nG1 X100\nG28 Y\nG1 Y100\nG1 Z5\n";
+#endif
+
 /**
   Main processing loop. It checks perodically for new commands, checks temperatures
   and executes new incoming commands.
 */
 void loop()
 {
+  if (!done_boot_sequence){
+    //startup homing routine:
+    //home to ZMAX first
+    //then home X and move to the contral X position
+    //then home Y and move to the contral Y position
+    //then move to z=5mm
+    gcode_execute_PString(boot_sequence);
+    done_boot_sequence = true;
+  }
+
   gcode_read_serial();
   GCode *code = gcode_next_command();
   //UI_SLOW; // do longer timed user interface action
