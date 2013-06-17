@@ -335,7 +335,6 @@ Interrupt routines to measure analog values and for the stepper timerloop are st
 */
 void setup()
 {
-  done_boot_sequence = false;
 #ifdef ANALYZER
 // Channel->pin assignments
 #if ANALYZER_CH0>=0
@@ -526,10 +525,16 @@ SET_OUTPUT(ANALYZER_CH7);
   RFSERIAL.begin(baudrate);
   out.println_P(PSTR("start"));
   UI_INITIALIZE;
-  
+
+  done_boot_sequence = false;
+
   // Check startup - does nothing if bootloader sets MCUSR to 0
   byte mcu = MCUSR;
-  if(mcu & 1) out.println_P(PSTR("PowerUp"));
+  if(mcu & 1){
+    out.println_P(PSTR("PowerUp"));
+    //inhibit the boot homing sequence if we're in a poweron reset!
+    done_boot_sequence = true;
+  }
   if(mcu & 2) out.println_P(PSTR("External Reset"));
   if(mcu & 4) out.println_P(PSTR("Brown out Reset"));
   if(mcu & 8) out.println_P(PSTR("Watchdog Reset"));
