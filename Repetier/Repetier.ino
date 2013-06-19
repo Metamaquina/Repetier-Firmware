@@ -535,7 +535,16 @@ SET_OUTPUT(ANALYZER_CH7);
     //inhibit the boot homing sequence if we're in a poweron reset!
     done_homing_sequence = true;
   }
-  if(mcu & 2) out.println_P(PSTR("External Reset"));
+  if(mcu & 2){
+    out.println_P(PSTR("External Reset"));
+    if(mcu & 1){
+      //This means the microcontroller is signaling that this is both a powerup and an external reset
+      //The reason for that is that the user has first turned on the power supply and later the user has connected to the printer
+      // and the power source jumper is set for power from power supply.
+      //well... in this case we'll actually have to run the homing routine :-P
+      done_homing_sequence = false;
+    }
+  }
   if(mcu & 4) out.println_P(PSTR("Brown out Reset"));
   if(mcu & 8) out.println_P(PSTR("Watchdog Reset"));
   if(mcu & 32) out.println_P(PSTR("Software Reset"));
