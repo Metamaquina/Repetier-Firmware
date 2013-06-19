@@ -326,7 +326,7 @@ void update_ramps_parameter() {
   update_extruder_flags();
 }
 
-bool done_boot_sequence;
+bool done_homing_sequence;
 
 /** \brief Setup of the hardware
 
@@ -526,14 +526,14 @@ SET_OUTPUT(ANALYZER_CH7);
   out.println_P(PSTR("start"));
   UI_INITIALIZE;
 
-  done_boot_sequence = false;
+  done_homing_sequence = false;
 
   // Check startup - does nothing if bootloader sets MCUSR to 0
   byte mcu = MCUSR;
   if(mcu & 1){
     out.println_P(PSTR("PowerUp"));
     //inhibit the boot homing sequence if we're in a poweron reset!
-    done_boot_sequence = true;
+    done_homing_sequence = true;
   }
   if(mcu & 2) out.println_P(PSTR("External Reset"));
   if(mcu & 4) out.println_P(PSTR("Brown out Reset"));
@@ -582,15 +582,7 @@ void defaultLoopActions() {
   DEBUG_MEMORY;
 }
 
-#define MM2RC2
-
-#ifdef MM2RC2
-//MM2 Release Candidate #2 has a mechanical bug:
-// for safety me must go down a bit after homing to ZMAX.
-const prog_char PROGMEM boot_sequence[] = "G28 Z\nG1 Z140\nG28 X\nG1 X100\nG28 Y\nG1 Y100\nG1 Z5\n";
-#else
-const prog_char PROGMEM boot_sequence[] = "G28 Z\nG28 X\nG1 X100\nG28 Y\nG1 Y100\nG1 Z5\n";
-#endif
+const prog_char PROGMEM homing_sequence[] = "G28 Z\nG28 X\nG1 X100\nG28 Y\nG1 Y100\nG1 Z5\n";
 
 /**
   Main processing loop. It checks perodically for new commands, checks temperatures
@@ -598,14 +590,14 @@ const prog_char PROGMEM boot_sequence[] = "G28 Z\nG28 X\nG1 X100\nG28 Y\nG1 Y100
 */
 void loop()
 {
-  if (!done_boot_sequence){
+  if (!done_homing_sequence){
     //startup homing routine:
     //home to ZMAX first
     //then home X and move to the contral X position
     //then home Y and move to the contral Y position
     //then move to z=5mm
-    gcode_execute_PString(boot_sequence);
-    done_boot_sequence = true;
+    gcode_execute_PString(homing_sequence);
+    done_homing_sequence = true;
   }
 
   gcode_read_serial();

@@ -119,7 +119,7 @@ the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 
 /** \brief Micro stepping rate of X, Y and Y tower stepper drivers
 */
-#define MICRO_STEPS 8
+#define MICRO_STEPS 16
 
 /** \brief Number of delta moves in each line. Moves that exceed this figure will be split into multiple lines.
 Increasing this figure can use a lot of memory since 7 bytes * size of line buffer * MAX_SELTA_SEGMENTS_PER_LINE
@@ -144,7 +144,7 @@ Mega.
 
 /** \brief Micro stepping rate of X, Y and Y tower stepper drivers
 */
-#define MICRO_STEPS 8
+#define MICRO_STEPS 16
 
 /** \brief Pitch in mm of drive belt. GT2 = 2mm
 */
@@ -182,7 +182,7 @@ Mega.
 #define EX0_E_RATIO float(37)/float(11)
 #define EX0_BOLT_DIAMETER 7.2
 #define FORMULA_EXT0_STEPS_PER_MM (MICRO_STEPS * STEPS_PER_ROTATION * EX0_E_RATIO) / (3.1415 * EX0_BOLT_DIAMETER)
-#define EMPIRICAL_EXT0_STEPS_PER_MM 325
+#define EMPIRICAL_EXT0_STEPS_PER_MM 650
 #define EXT0_STEPS_PER_MM EMPIRICAL_EXT0_STEPS_PER_MM
 // What type of sensor is used?
 // 1 is 100k thermistor (Epcos B57560G0107F000 - RepRap-Fab.org and many other)
@@ -772,7 +772,7 @@ on this endstop.
 // ##########################################################################################
 
 // Microstep setting (Only functional when stepper driver microstep pins are connected to MCU. Currently only works for RAMBO boards
-#define MICROSTEP_MODES {8,8,8,8,8} // [1,2,4,8,16]
+#define MICROSTEP_MODES {16,16,16,16,16} // [1,2,4,8,16]
 
 // Motor Current setting (Only functional when motor driver current ref pins are connected to a digital trimpot on supported boards)
 // {X, Y, Z, E1, E2}
