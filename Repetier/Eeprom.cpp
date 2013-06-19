@@ -595,6 +595,7 @@ void epr_init() {
     epr_set_byte(EPR_MAGIC_BYTE,EEPROM_MODE); // Make datachange permanent
     epr_data_to_eeprom(storedcheck!=check);
   }
+  OUT_P_L_LN("EEPROM mode: ", epr_get_byte(EPR_MAGIC_BYTE));
 #endif
 }
 /**
