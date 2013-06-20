@@ -850,7 +850,7 @@ on this endstop.
 /** Speed in mm/s for finding the home position.  Overridden if EEPROM activated. */
 #define HOMING_FEEDRATE_X 50
 #define HOMING_FEEDRATE_Y 50
-#define HOMING_FEEDRATE_Z 3
+#define HOMING_FEEDRATE_Z 5
 
 /* If you have a backlash in both z-directions, you can use this. For most printer, the bed will be pushed down by it's
 own weight, so this is nearly never needed. */
