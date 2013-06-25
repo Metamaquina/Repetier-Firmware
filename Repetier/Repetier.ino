@@ -524,6 +524,7 @@ SET_OUTPUT(ANALYZER_CH7);
   epr_init_baudrate();
   RFSERIAL.begin(baudrate);
   out.println_P(PSTR("start"));
+  out.println_P(PSTR(FIRMWARE_VERSION_STRING));
 #if EEPROM_MODE!=0
   OUT_P_L_LN("EEPROM mode: ", epr_get_byte(EPR_MAGIC_BYTE));
 #endif

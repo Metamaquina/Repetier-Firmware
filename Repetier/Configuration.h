@@ -19,6 +19,9 @@
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
+#define FIRMWARE_VERSION_STRING "RepetierFw MM2 2013-06-25\nhttps://github.com/Metamaquina/Repetier-Firmware/tree/MM2_2013_06_25"
+//#define FIRMWARE_VERSION_STRING "https://github.com/Metamaquina/Repetier-Firmware/tree/mm2"
+
 /* Some words on units:
 
 From 0.80 onwards the units used are unified for easier configuration, watch out when transfering from older configs!
@@ -751,7 +754,7 @@ on this endstop.
 // You can disable endstop checking for print moves. This is needed, if you get sometimes
 // false signals from your endstops. If your endstops don't give false signals, you
 // can set it on for safety.
-#define ALWAYS_CHECK_ENDSTOPS true
+#define ALWAYS_CHECK_ENDSTOPS false
 
 // maximum positions in mm - only fixed numbers!
 // For delta robot Z_MAX_LENGTH is maximum travel of the towers and should be set to the distance between the hotend
