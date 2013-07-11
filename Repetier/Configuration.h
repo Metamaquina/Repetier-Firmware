@@ -19,7 +19,7 @@
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
-#define FIRMWARE_VERSION_STRING "RepetierFw MM2 2013-06-25\nhttps://github.com/Metamaquina/Repetier-Firmware/tree/MM2_2013_06_25"
+#define FIRMWARE_VERSION_STRING "RepetierFw MM2 2013-07-09\nhttps://github.com/Metamaquina/Repetier-Firmware/tree/MM2_2013_07_09"
 //#define FIRMWARE_VERSION_STRING "https://github.com/Metamaquina/Repetier-Firmware/tree/mm2"
 
 /* Some words on units:
@@ -725,14 +725,14 @@ on this endstop.
 #define max_software_endstop_r true
 
 //If true, axis won't move to coordinates less than zero.
-#define min_software_endstop_x false
-#define min_software_endstop_y false
+#define min_software_endstop_x true
+#define min_software_endstop_y true
 #define min_software_endstop_z false
 
 //If true, axis won't move to coordinates greater than the defined lengths below.
-#define max_software_endstop_x false
-#define max_software_endstop_y false
-#define max_software_endstop_z false
+#define max_software_endstop_x true
+#define max_software_endstop_y true
+#define max_software_endstop_z true
 
 // If during homing the endstop is reached, ho many mm should the printer move back for the second try
 #define ENDSTOP_X_BACK_MOVE 5
@@ -754,7 +754,7 @@ on this endstop.
 // You can disable endstop checking for print moves. This is needed, if you get sometimes
 // false signals from your endstops. If your endstops don't give false signals, you
 // can set it on for safety.
-#define ALWAYS_CHECK_ENDSTOPS false
+#define ALWAYS_CHECK_ENDSTOPS true
 
 // maximum positions in mm - only fixed numbers!
 // For delta robot Z_MAX_LENGTH is maximum travel of the towers and should be set to the distance between the hotend
