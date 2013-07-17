@@ -194,7 +194,10 @@ void home_axis(bool xaxis,bool yaxis,bool zaxis) {
   if(zaxis) {
     if ((MIN_HARDWARE_ENDSTOP_Z && Z_MIN_PIN > -1 && Z_HOME_DIR==-1) || (MAX_HARDWARE_ENDSTOP_Z && Z_MAX_PIN > -1 && Z_HOME_DIR==1)){
       UI_STATUS_UPD(UI_TEXT_HOME_Z);
-      steps = (printer_state.zMaxSteps-printer_state.zMinSteps) * Z_HOME_DIR;         
+//      steps = (printer_state.zMaxSteps-printer_state.zMinSteps) * Z_HOME_DIR;
+ //Do not load Z_MAX_LENGTH from EEPROM for z-homing euristics because when the user misconfigures this EEPROM value, recalibrating it becomes a very inconvenient task.
+//TODO: reimplement this properly by having 2 distinct EEPROM values: Z_MAX_LENGTH and Z_FINE_TUNNING
+      steps = (Z_MAX_LENGTH * axis_steps_per_unit[2]) * Z_HOME_DIR;
       printer_state.currentPositionSteps[2] = -steps;
       move_steps(0,0,2*steps,0,homing_feedrate[2],true,true);
       printer_state.currentPositionSteps[2] = 0;
