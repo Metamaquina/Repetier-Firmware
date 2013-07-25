@@ -785,7 +785,7 @@ on this endstop.
 
 // RAMBo board: Rs = 0.1 ohm
 // Values 0-255 (RAMBo 135 = ~0.75A, 185 = ~1A, 222 = ~1.2A)
-#define MOTOR_CURRENT {90,90,135,90,90}
+#define MOTOR_CURRENT {100,100,135,135,0}
 
 // 3D Master board
 //#define MOTOR_CURRENT {35713,35713,35713,35713,35713} // Values 0-65535 (3D Master 35713 = ~1A)
