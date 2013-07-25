@@ -203,7 +203,7 @@ Mega.
 // 99 Generic thermistor table 3
 // 100 is AD595
 // 101 is MAX6675
-#define EXT0_TEMPSENSOR_TYPE 1
+#define EXT0_TEMPSENSOR_TYPE 1 //EPCOS fits our whitelabel thermistor reasonably well
 // Analog input pin for reading temperatures or pin enabling SS for MAX6675
 #define EXT0_TEMPSENSOR_PIN TEMP_0_PIN
 // WHich pin enables the heater
@@ -434,7 +434,7 @@ If you have a PTC thermistor instead of a NTC thermistor, keep the adc values in
 */
 /** Number of entries in the user thermistortable 0. Set to 0 to disable it. */
 
-// *************************** Heated bed 15k-ohm thermistor ***************************
+// *************************** MM2 Heated bed 15k-ohm thermistor ***************************
 // Thermistor lookup table for RepRap Temperature Sensor Boards (http://make.rrrf.org/ts)
 // Made with createTemperatureLookup.py (http://svn.reprap.org/trunk/reprap/firmware/Arduino/utilities/createTemperatureLookup.py)
 // ./createTemperatureLookup.py --r0=15000 --t0=25 --r1=0 --r2=4700 --beta=3528 --max-adc=1023
@@ -469,6 +469,7 @@ If you have a PTC thermistor instead of a NTC thermistor, keep the adc values in
    {1008*4, -35*8}}
 
 
+// *************************** MM2 AddTherm 100k-ohm thermistor ***************************
 /** Number of entries in the user thermistortable 1. Set to 0 to disable it. */
 // ./createTemperatureLookup.py --r0=100000 --t0=25 --r1=0 --r2=4700 --beta=3977 --max-adc=1023
 // r0: 100000
@@ -654,7 +655,7 @@ A good start is 30 lower then the optimal value. You need to leave room for cool
 // When temperature exceeds max temp, your heater will be switched off.
 // This feature exists to protect your hotend from overheating accidentally, but *NOT* from thermistor short/failure!
 // You should use MINTEMP for thermistor short/failure protection.
-#define MAXTEMP 260
+#define MAXTEMP 245
 
 /** \brief Used reference, normally ANALOG_REF_AVCC or ANALOG_REF_AREF for experts ANALOG_REF_INT_2_56 = 2.56V and ANALOG_REF_INT_1_1=1.1V inernaly generated */
 #define ANALOG_REF ANALOG_REF_AVCC
