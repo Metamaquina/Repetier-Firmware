@@ -209,8 +209,8 @@ void home_axis(bool xaxis,bool yaxis,bool zaxis) {
 #endif
       printer_state.currentPositionSteps[2] = (Z_HOME_DIR == -1) ? printer_state.zMinSteps : printer_state.zMaxSteps;
     }
+    printer_state.countZSteps = 0;
   }
-  printer_state.countZSteps = 0;
   UI_CLEAR_STATUS  
 }
 #endif
