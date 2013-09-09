@@ -63,12 +63,18 @@ void printPosition() {
 }
 void print_temperatures() {
 	float temp = current_extruder->tempControl.currentTemperatureC;
+
 #if HEATED_BED_SENSOR_TYPE==0 
   OUT_P_F("T:",temp); 
 #else
   OUT_P_F("T:",temp); 
-  OUT_P_F(" B:",heated_bed_get_temperature()); 
+//  OUT_P_F(" B:",heated_bed_get_temperature()); 
 #endif
+
+  TemperatureController *c = tempController[NUM_TEMPERATURE_LOOPS-1];
+  float rawtemp = analogRead(TEMP_BED_PIN);
+  OUT_P_F(" raw:",rawtemp); 
+
 #ifdef TEMP_PID
   OUT_P_I(" @:",(autotuneIndex==255?pwm_pos[current_extruder->id]:pwm_pos[autotuneIndex])); // Show output of autotune when tuning!
 #endif
