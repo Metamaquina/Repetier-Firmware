@@ -72,21 +72,27 @@ void print_temperatures() {
 #endif
 
   TemperatureController *c = tempController[NUM_TEMPERATURE_LOOPS-1];
-  float rawtemp = analogRead(TEMP_BED_PIN);
-  OUT_P_F(" raw:",rawtemp); 
+  float rawtemp1 = analogRead(TEMP_BED_PIN);
+  OUT_P_F(" R1: ",rawtemp1); 
+
+  //float rawtemp2 = analogRead(TEMP_0_PIN);
+  //OUT_P_F(" R2: ",rawtemp2);  
+
+  //float rawtemp3 = analogRead(TEMP_1_PIN);
+  //OUT_P_F(" R3: ",rawtemp3); 
 
 #ifdef TEMP_PID
-  OUT_P_I(" @:",(autotuneIndex==255?pwm_pos[current_extruder->id]:pwm_pos[autotuneIndex])); // Show output of autotune when tuning!
+  //OUT_P_I(" @:",(autotuneIndex==255?pwm_pos[current_extruder->id]:pwm_pos[autotuneIndex])); // Show output of autotune when tuning!
 #endif
 #if NUM_EXTRUDER>1
   for(byte i=0;i<NUM_EXTRUDER;i++) {
-    OUT_P(" T");
-    out.print((int)i);
-    OUT_P_F(":",extruder[i].tempControl.currentTemperatureC); 
+    //OUT_P(" T");
+    //out.print((int)i);
+    //OUT_P_F(":",extruder[i].tempControl.currentTemperatureC); 
 #ifdef TEMP_PID
-    OUT_P(" @");
-    out.print((int)i);
-  OUT_P_I(":",(pwm_pos[extruder[i].tempControl.pwmIndex])); // Show output of autotune when tuning!
+    //OUT_P(" @");
+    //out.print((int)i);
+  //OUT_P_I(":",(pwm_pos[extruder[i].tempControl.pwmIndex])); // Show output of autotune when tuning!
 #endif
   }
 #endif
