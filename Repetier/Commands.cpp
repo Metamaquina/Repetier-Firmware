@@ -866,6 +866,16 @@ void process_command(GCode *com,byte bufferedCommand)
           beep(com->S,com->P); // Beep test
         break;
 #endif
+      case 144: // Set sensor type
+        //M144 P<sensor> S<type>
+        if(GCODE_HAS_P(com) && GCODE_HAS_S(com))
+          if (com->P==0){
+            heated_bed_set_sensor_type(com->S);
+          } else {
+            extruder_set_sensor_type(com->P-1, com->S);
+          }
+        break;
+
       #ifdef RAMP_ACCELERATION
       case 201: // M201
         if(GCODE_HAS_X(com)) axis_steps_per_sqr_second[0] = com->X * axis_steps_per_unit[0];

@@ -446,6 +446,14 @@ void extruder_select(byte ext_num) {
 #endif
 }
 
+void extruder_set_sensor_type(float type, byte extr) {
+  extruder[extr].tempControl.sensorType = extr;
+}
+
+void heated_bed_set_sensor_type(float type) {
+  //TODO:implement-me!
+}
+
 // ------------------------------------------------------------------------------------------------------------------
 // ---------------------------------------------- extruder_set_temperature ------------------------------------------
 // ------------------------------------------------------------------------------------------------------------------
