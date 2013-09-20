@@ -511,8 +511,42 @@ If you have a PTC thermistor instead of a NTC thermistor, keep the adc values in
 // *************************** MM2 AddTherm 100k-ohm thermistor (thermistor batch #2) ***************************
 
 /** Number of entries in the user thermistortable 1. Set to 0 to disable it. */
-#define NUM_TEMPS_USERTHERMISTOR1 0
-//TODO: fix-me!
+#define NUM_TEMPS_USERTHERMISTOR1 34
+#define USER_THERMISTORTABLE1  {\
+ {0, 4000},\
+ {92,	2399},\
+ {105,	2337},\
+ {121,	2271},\
+ {140,	2203},\
+ {162,	2135},\
+ {189,	2063},\
+ {51*4, 235.51*8},\
+ {51*4, 235.51*8},\
+ {55*4, 231.45*8},\
+ {61*4, 225.88*8},\
+ {64*4, 223.30*8},\
+ {72*4, 216.96*8},\
+ {77*4, 213.35*8},\
+ {84*4, 208.67*8},\
+ {91*4, 204.37*8},\
+ {109*4, 194.66*8},\
+ {129*4, 185.60*8},\
+ {155*4, 175.72*8},\
+ {169*4, 171.07*8},\
+ {184*4, 166.50*8},\
+ {202*4, 161.48*8},\
+ {212*4, 158.88*8},\
+ {264*4, 147.08*8},\
+ {1771,	960},\
+ {2357,	800},\
+ {2943,	640},\
+ {3429,	480},\
+ {3760,	320},\
+ {3869,	240},\
+ {3912,	200},\
+ {3948,	160},\
+ {4077,	-160},\
+ {4094,	-440}};
 
 /* ============ Addterm 100k thermistor (thermistor batch #3) ================= */
 /** Number of entries in the user thermistortable 2. Set to 0 to disable it. */
