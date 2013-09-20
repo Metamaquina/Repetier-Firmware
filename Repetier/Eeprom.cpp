@@ -187,6 +187,7 @@ void epr_eeprom_reset() {
   e->tempControl.pidDGain = EXT0_PID_D;
   e->tempControl.pidMax = EXT0_PID_MAX;
 #endif
+  e->tempControl.sensorType = EXT0_TEMPSENSOR_TYPE;
   e->yOffset = EXT0_Y_OFFSET;
   e->xOffset = EXT0_X_OFFSET;
   e->watchPeriod = EXT0_WATCHPERIOD;
@@ -217,6 +218,7 @@ void epr_eeprom_reset() {
   e->tempControl.pidDGain = EXT1_PID_D;
   e->tempControl.pidMax = EXT1_PID_MAX;
 #endif
+  e->tempControl.sensorType = EXT1_TEMPSENSOR_TYPE;
   e->yOffset = EXT1_Y_OFFSET;
   e->xOffset = EXT1_X_OFFSET;
   e->watchPeriod = EXT1_WATCHPERIOD;
@@ -247,6 +249,7 @@ void epr_eeprom_reset() {
   e->tempControl.pidDGain = EXT2_PID_D;
   e->tempControl.pidMax = EXT2_PID_MAX;
 #endif
+  e->tempControl.sensorType = EXT2_TEMPSENSOR_TYPE;
   e->yOffset = EXT2_Y_OFFSET;
   e->xOffset = EXT2_X_OFFSET;
   e->watchPeriod = EXT2_WATCHPERIOD;
@@ -277,6 +280,7 @@ void epr_eeprom_reset() {
   e->tempControl.pidDGain = EXT3_PID_D;
   e->tempControl.pidMax = EXT3_PID_MAX;
 #endif
+  e->tempControl.sensorType = EXT3_TEMPSENSOR_TYPE;
   e->yOffset = EXT3_Y_OFFSET;
   e->xOffset = EXT3_X_OFFSET;
   e->watchPeriod = EXT3_WATCHPERIOD;
@@ -307,6 +311,7 @@ void epr_eeprom_reset() {
   e->tempControl.pidDGain = EXT4_PID_D;
   e->tempControl.pidMax = EXT4_PID_MAX;
 #endif
+  e->tempControl.sensorType = EXT4_TEMPSENSOR_TYPE;
   e->yOffset = EXT4_Y_OFFSET;
   e->xOffset = EXT4_X_OFFSET;
   e->watchPeriod = EXT4_WATCHPERIOD;
@@ -337,6 +342,7 @@ void epr_eeprom_reset() {
   e->tempControl.pidDGain = EXT5_PID_D;
   e->tempControl.pidMax = EXT5_PID_MAX;
 #endif
+  e->tempControl.sensorType = EXT5_TEMPSENSOR_TYPE;
   e->yOffset = EXT5_Y_OFFSET;
   e->xOffset = EXT5_X_OFFSET;
   e->watchPeriod = EXT5_WATCHPERIOD;
@@ -460,6 +466,7 @@ void epr_data_to_eeprom(byte corrupted) {
     epr_set_int(o+EPR_EXTRUDER_WAIT_RETRACT_UNITS,EXT0_WAIT_RETRACT_UNITS);
 #endif
     epr_set_byte(o+EPR_EXTRUDER_COOLER_SPEED,e->coolerSpeed);
+    epr_set_byte(o+EPR_EXTRUDER_SENSOR_TYPE,e->tempControl.sensorType);
 #ifdef USE_ADVANCE
 #ifdef ENABLE_QUADRATIC_ADVANCE
     epr_set_float(o+EPR_EXTRUDER_ADVANCE_K,e->advanceK);
@@ -568,6 +575,8 @@ void epr_eeprom_to_data() {
  #endif
     if(version>1)
       e->coolerSpeed = epr_get_byte(o+EPR_EXTRUDER_COOLER_SPEED);
+
+    e->tempControl.sensorType = epr_get_byte(o+EPR_EXTRUDER_SENSOR_TYPE);
   }
   if(version!=EEPROM_PROTOCOL_VERSION) {
     OUT_P_LN("Protocol version changed, upgrading");
@@ -712,6 +721,8 @@ void epr_output_settings() {
     epr_out_int(o+EPR_EXTRUDER_WAIT_RETRACT_UNITS,PSTR("distance to retract when heating [mm]"));
 #endif
     epr_out_byte(o+EPR_EXTRUDER_COOLER_SPEED,PSTR("extruder cooler speed [0-255]"));
+    epr_out_byte(o+EPR_EXTRUDER_SENSOR_TYPE,PSTR("extruder sensor type"));
+
 #ifdef USE_ADVANCE
 #ifdef ENABLE_QUADRATIC_ADVANCE
     epr_out_float(o+EPR_EXTRUDER_ADVANCE_K,PSTR("advance K [0=off]"));
