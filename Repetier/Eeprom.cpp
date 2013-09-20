@@ -115,7 +115,7 @@ void epr_update(GCode *com) {
   epr_eeprom_to_data();
 }
 
-/** \brief Copy data from EEPROM to variables.
+/** \brief Reset variables to default configuration.
 */
 void epr_eeprom_reset() {
   byte version = EEPROM_PROTOCOL_VERSION;
