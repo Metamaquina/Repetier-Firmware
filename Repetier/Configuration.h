@@ -188,13 +188,13 @@ Mega.
 #define EMPIRICAL_EXT0_STEPS_PER_MM 650
 #define EXT0_STEPS_PER_MM EMPIRICAL_EXT0_STEPS_PER_MM
 // What type of sensor is used?
-// 1 is 100k thermistor (Epcos B57560G0107F000 - RepRap-Fab.org and many other)
+// 1 is 100k thermistor (Epcos B57560G0107F000 - RepRap-Fab.org and many other) : MM2 first thermistor batch
 // 2 is 200k thermistor
 // 3 is mendel-parts thermistor (EPCOS G550)
 // 4 is 10k thermistor
-// 5 is userdefined thermistor table 0
-// 6 is userdefined thermistor table 1
-// 7 is userdefined thermistor table 2
+// 5 is userdefined thermistor table 0 : SMD 15k thermistor for the heated bed
+// 6 is userdefined thermistor table 1 : MM2 second Addtherm thermistor batch
+// 7 is userdefined thermistor table 2 : MM2 third Addtherm thermistor batch
 // 50 is userdefined thermistor table 0 for PTC thermistors
 // 51 is userdefined thermistor table 0 for PTC thermistors
 // 52 is userdefined thermistor table 0 for PTC thermistors
@@ -473,7 +473,7 @@ If you have a PTC thermistor instead of a NTC thermistor, keep the adc values in
    {1008*4, -35*8}}
 
 
-// *************************** MM2 AddTherm 100k-ohm thermistor ***************************
+// *************************** MM2 AddTherm 100k-ohm thermistor (generated from BETA value) ***************************
 /** Number of entries in the user thermistortable 1. Set to 0 to disable it. */
 // ./createTemperatureLookup.py --r0=100000 --t0=25 --r1=0 --r2=4700 --beta=3977 --max-adc=1023
 // r0: 100000
@@ -483,6 +483,7 @@ If you have a PTC thermistor instead of a NTC thermistor, keep the adc values in
 // beta: 3977
 // max adc: 1023
 
+/*
 #define NUM_TEMPS_USERTHERMISTOR1 20
 #define USER_THERMISTORTABLE1  {\
    {1*4, 913*8},\
@@ -505,10 +506,46 @@ If you have a PTC thermistor instead of a NTC thermistor, keep the adc values in
    {902*4, 50*8},\
    {955*4, 34*8},\
    {1008*4, 2*8}}
-   
+*/
+
+// *************************** MM2 AddTherm 100k-ohm thermistor (thermistor batch #2) ***************************
+
+/** Number of entries in the user thermistortable 1. Set to 0 to disable it. */
+#define NUM_TEMPS_USERTHERMISTOR1 0
+//TODO: fix-me!
+
+/* ============ Addterm 100k thermistor (thermistor batch #3) ================= */
 /** Number of entries in the user thermistortable 2. Set to 0 to disable it. */
-#define NUM_TEMPS_USERTHERMISTOR2 0
-#define USER_THERMISTORTABLE2  {}  
+#define NUM_TEMPS_USERTHERMISTOR2 28
+#define USER_THERMISTORTABLE2  {\
+ {0, 4000},\
+ {92,	2399},\
+ {105,	2337},\
+ {121,	2271},\
+ {140,	2203},\
+ {162,	2135},\
+ {189,	2063},\
+ {222,	1988},\
+ {261,	1913},\
+ {308,	1836},\
+ {365,	1757},\
+ {434,	1676},\
+ {519,	1592},\
+ {621,	1509},\
+ {744,	1425},\
+ {891,	1341},\
+ {1067,	1257},\
+ {1272,	1175},\
+ {1771,	960},\
+ {2357,	800},\
+ {2943,	640},\
+ {3429,	480},\
+ {3760,	320},\
+ {3869,	240},\
+ {3912,	200},\
+ {3948,	160},\
+ {4077,	-160},\
+ {4094,	-440}};
 
 /** If defined, creates a thermistortable at startup.
 
