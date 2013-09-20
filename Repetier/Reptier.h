@@ -386,8 +386,8 @@ extern void extruder_set_temperature(float temp_celsius,byte extr);
 // Set temperature of heated bed
 extern void heated_bed_set_temperature(float temp_celsius);
 //extern long extruder_steps_to_position(float value,byte relative);
-void extruder_set_sensor_type(float type, byte extr);
-void heated_bed_set_sensor_type(float type);
+void extruder_set_sensor_type(byte extr, byte type);
+void heated_bed_set_sensor_type(byte type);
 extern void extruder_set_direction(byte steps);
 extern void extruder_disable();
 #ifdef TEMP_PID

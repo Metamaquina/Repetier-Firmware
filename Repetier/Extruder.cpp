@@ -446,11 +446,15 @@ void extruder_select(byte ext_num) {
 #endif
 }
 
-void extruder_set_sensor_type(float type, byte extr) {
-  extruder[extr].tempControl.sensorType = extr;
+void extruder_set_sensor_type(byte extr, byte type) {
+  OUT_P_I("Extruder #", extr);
+  OUT_P_I_LN(": changing sensor type to ", type);
+  
+  extruder[extr].tempControl.sensorType = type;
 }
 
-void heated_bed_set_sensor_type(float type) {
+void heated_bed_set_sensor_type(byte type) {
+  OUT_P_I_LN("NOT IMPLEMENTED! Changing heated bed sensor type to ", type);
   //TODO:implement-me!
 }
 
