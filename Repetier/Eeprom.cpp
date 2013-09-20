@@ -576,7 +576,8 @@ void epr_eeprom_to_data() {
     if(version>1)
       e->coolerSpeed = epr_get_byte(o+EPR_EXTRUDER_COOLER_SPEED);
 
-    e->tempControl.sensorType = epr_get_byte(o+EPR_EXTRUDER_SENSOR_TYPE);
+    if(version>=3)
+      e->tempControl.sensorType = epr_get_byte(o+EPR_EXTRUDER_SENSOR_TYPE);
   }
   if(version!=EEPROM_PROTOCOL_VERSION) {
     OUT_P_LN("Protocol version changed, upgrading");
