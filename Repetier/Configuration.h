@@ -19,7 +19,7 @@
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
-#define FIRMWARE_VERSION_STRING "RepetierFw MM2 2013-09-20\nhttps://github.com/Metamaquina/Repetier-Firmware/tree/MM2_2013_09_20"
+#define FIRMWARE_VERSION_STRING "RepetierFw MM2 2013-10-15\nhttps://github.com/Metamaquina/Repetier-Firmware/tree/MM2_2013_10_15"
 //#define FIRMWARE_VERSION_STRING "https://github.com/Metamaquina/Repetier-Firmware/tree/mm2"
 
 /* Some words on units:
