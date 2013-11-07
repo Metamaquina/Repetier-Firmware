@@ -595,7 +595,7 @@ void defaultLoopActions() {
   DEBUG_MEMORY;
 }
 
-const prog_char PROGMEM homing_sequence[] = "G28 Z\nG28 X\nG1 X100 F10000\nG28 Y\nG1 Y100 F10000\nG1 Z75 F10000\n";
+const prog_char PROGMEM homing_sequence[] = "G28 Z\nG28 X\nG1 X100 F10000\nG28 Y\nG1 Y100 F10000\nG1 Z55 F10000\n";
 
 /**
   Main processing loop. It checks perodically for new commands, checks temperatures
